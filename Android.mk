@@ -9,30 +9,30 @@ LOCAL_MODULE:= libevent2
 LOCAL_MODULE_TAGS:= optional
 
 LOCAL_SRC_FILES := \
-    buffer.c \
-    bufferevent.c \
-    bufferevent_filter.c \
-    bufferevent_pair.c \
-    bufferevent_ratelim.c \
-    bufferevent_sock.c \
-    epoll.c \
-    epoll_sub.c \
-    evdns.c \
-    event.c \
-    event_tagging.c \
-    evmap.c \
-    evrpc.c \
-    evthread.c \
-    evthread_pthread.c \
-    evutil.c \
-    evutil_rand.c \
-    http.c \
-    listener.c \
-    log.c \
-    poll.c \
-    select.c \
-    signal.c \
-    strlcpy.c
+    $(LOCAL_PATH)/buffer.c \
+    $(LOCAL_PATH)/bufferevent.c \
+    $(LOCAL_PATH)/bufferevent_filter.c \
+    $(LOCAL_PATH)/bufferevent_pair.c \
+    $(LOCAL_PATH)/bufferevent_ratelim.c \
+    $(LOCAL_PATH)/bufferevent_sock.c \
+    $(LOCAL_PATH)/epoll.c \
+    $(LOCAL_PATH)/epoll_sub.c \
+    $(LOCAL_PATH)/evdns.c \
+    $(LOCAL_PATH)/event.c \
+    $(LOCAL_PATH)/event_tagging.c \
+    $(LOCAL_PATH)/evmap.c \
+    $(LOCAL_PATH)/evrpc.c \
+    $(LOCAL_PATH)/evthread.c \
+    $(LOCAL_PATH)/evthread_pthread.c \
+    $(LOCAL_PATH)/evutil.c \
+    $(LOCAL_PATH)/evutil_rand.c \
+    $(LOCAL_PATH)/http.c \
+    $(LOCAL_PATH)/listener.c \
+    $(LOCAL_PATH)/log.c \
+    $(LOCAL_PATH)/poll.c \
+    $(LOCAL_PATH)/select.c \
+    $(LOCAL_PATH)/signal.c \
+    $(LOCAL_PATH)/strlcpy.c
 
 LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
