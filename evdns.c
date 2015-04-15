@@ -81,6 +81,9 @@
 #endif
 #include <shlobj.h>
 #endif
+#ifdef ANDROID
+#include <sys/system_properties.h>
+#endif
 
 #include "event2/dns.h"
 #include "event2/dns_struct.h"
@@ -3892,6 +3895,27 @@ evdns_base_new(struct event_base *event_base, int initialize_nameservers)
 		int r;
 #ifdef WIN32
 		r = evdns_base_config_windows_nameservers(base);
+#elif defined(ANDROID)
+    {
+        int add_servers = 0;
+        char buf[PROP_VALUE_MAX];
+        r = __system_property_get("net.dns1", buf);
+        if(r >= 7)
+        {
+            add_servers++;
+            evdns_base_nameserver_ip_add(base, buf);
+        }
+        r = __system_property_get("net.dns2", buf);
+        if(r >= 7)
+        {
+            add_servers++;
+            evdns_base_nameserver_ip_add(base, buf);
+        }
+        if(add_servers == 0)
+        {
+            evdns_base_nameserver_ip_add(base,"8.8.8.8");
+        }
+    }
 #else
 		r = evdns_base_resolv_conf_parse(base, DNS_OPTIONS_ALL, "/etc/resolv.conf");
 #endif
